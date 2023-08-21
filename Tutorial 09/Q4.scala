@@ -1,15 +1,14 @@
 object Q4 extends App{
-  val a1: Account4 = new Account4("1", "001", 4000)
-  val a2: Account4 = new Account4("2", "002", 5000)
-  val a3: Account4 = new Account4("3", "003", -2000)
-  val a4: Account4 = new Account4("4", "004", -500)
-  var bank: List[Account4] = List(a1, a2, a3, a4) // List of accounts
+  val a1: Account4 = new Account4("1", "001", 5000)
+  val a2: Account4 = new Account4("2", "002", 2000)
+  val a3: Account4 = new Account4("3", "003", -3000)
+  val a4: Account4 = new Account4("4", "004", -1000)
 
-  def accountsWithNegativeBalances(): List[Account4] =
-    bank.filter(x => x.accBalance < 0)
+  var bank: List[Account4] = List(a1, a2, a3, a4)
 
-  def sumOfAllAccounts(): Double =
-    bank.map(x => x.accBalance).reduce((x, y) => x + y)
+  def negativeBalancesAccounts(): List[Account4] = bank.filter(x => x.accBalance < 0)
+
+  def sumOfAccounts(): Double = bank.map(x => x.accBalance).reduce((x, y) => x + y)
 
   def interest(x: Account4): Unit = {
     if (x.accBalance > 0) {
@@ -19,23 +18,19 @@ object Q4 extends App{
     }
   }
 
-  // Print list of accounts with negative balances
-  println("\nAccounts with negative balances: ")
-  accountsWithNegativeBalances().foreach(x => println(x))
+  println("Accounts with negative balances: ")
+  negativeBalancesAccounts().foreach(x => println(x))
 
-  // Print sum of all account balances
-  println("\nSum of all account balances: " + sumOfAllAccounts())
+  println("\nSum of all account balances: " + sumOfAccounts())
 
-  // Calculate final balances of all accounts after apply the interest function
   println("\nFinal balances of all accounts: ")
   bank.foreach(x => (interest(x), println(x)))
 }
 
-class Account4(i: String, accNum: String, accBal: Double) {
+class Account4(i: String, a: String, b: Double) {
   var id: String = i
-  var accNumber: String = accNum
-  var accBalance: Double = accBal
+  var accNum: String = a
+  var accBalance: Double = b
 
-  override def toString: String =
-    "[" + id + " : " + accNumber + " : " + accBalance + "]"
+  override def toString: String = id + " : " + accNum + " : " + accBalance
 }
