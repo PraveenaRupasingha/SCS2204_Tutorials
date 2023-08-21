@@ -39,5 +39,3 @@ class Account4(i: String, accNum: String, accBal: Double) {
   override def toString: String =
     "[" + id + " : " + accNumber + " : " + accBalance + "]"
 }
-
-
