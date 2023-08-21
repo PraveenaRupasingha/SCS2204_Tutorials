@@ -8,11 +8,9 @@ object Q2 extends App{
 
 class Rational2(x: Int, y: Int) {
   def numer = x
-
   def denom = y
 
-  def sub(r: Rational2) =
-    new Rational2(numer * r.denom - r.numer * denom, denom * r.denom)
+  def sub(r: Rational2) = new Rational2(numer * r.denom - r.numer * denom, denom * r.denom)
 
   override def toString = s"$numer/$denom"
 }
